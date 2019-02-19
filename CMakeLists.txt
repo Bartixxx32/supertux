@@ -474,8 +474,6 @@ ExternalProject_Add(SDL_ttf
   -DCMAKE_INSTALL_PREFIX=${SDL_TTF_PREFIX}
   -DWITH_RAQM=${RAQM_FOUND}
   -DRAQM_LIBRARY=${RAQM_LIBRARY}
-  -DHARFBUZZ_LIBRARY=${HARFBUZZ_LIBRARY}
-  -DFRIBIDI_LIBRARY=${FRIBIDI_LIBRARY}
   -DRAQM_INCLUDE_DIR=${RAQM_INCLUDE_DIR}
   -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
   -DBUILD_SHARED_LIBS=OFF)
@@ -800,7 +798,7 @@ endif()
 target_link_libraries(supertux2_lib PUBLIC SDL_ttf_lib)
 target_link_libraries(supertux2_lib PUBLIC ${FREETYPE_LIBRARIES})
 if(RAQM_FOUND)
-  target_link_libraries(supertux2_lib PUBLIC ${HARFBUZZ_LIBRARY} ${FRIBIDI_LIBRARY} ${RAQM_LIBRARIES})
+  target_link_libraries(supertux2_lib PUBLIC ${RAQM_LIBRARIES})
 endif()
 
 target_link_libraries(supertux2_lib PUBLIC squirrel_lib)
