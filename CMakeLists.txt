@@ -457,6 +457,7 @@ include_directories(SYSTEM ${TINYGETTEXT_PREFIX}/include)
 
 
 ## external/SDL_ttf with patches
+find_package(Freetype REQUIRED)
 find_package(RAQM)
 set(SDL_TTF_PREFIX ${CMAKE_BINARY_DIR}/SDL_ttf/)
 ExternalProject_Add(SDL_ttf
@@ -790,7 +791,12 @@ else()
   target_link_libraries(supertux2_lib PUBLIC ${SDL2IMAGE_LIBRARIES})
 endif()
 target_link_libraries(supertux2_lib PUBLIC SDL_ttf_lib)
-target_link_libraries(supertux2_lib PUBLIC ${FREETYPE_LIBRARIES})
+
+if(VCPKG_BUILD)
+  target_link_libraries(supertux2_lib PUBLIC Freetype::Freetype)
+else()
+  target_link_libraries(supertux2_lib PUBLIC ${FREETYPE_LIBRARIES})
+endif()
 
 target_link_libraries(supertux2_lib PUBLIC squirrel_lib)
 target_link_libraries(supertux2_lib PUBLIC sqstdlib_lib)
