@@ -478,9 +478,6 @@ ExternalProject_Add(SDL_ttf
   -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
   -DBUILD_SHARED_LIBS=OFF)
 add_library(SDL_ttf_lib STATIC IMPORTED)
-if(RAQM_FOUND)
-  add_dependencies(SDL_ttf raqm)
-endif()
 set_target_properties(SDL_ttf_lib PROPERTIES IMPORTED_LOCATION "${SDL_TTF_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}SDL2_ttf${CMAKE_STATIC_LIBRARY_SUFFIX}")
 link_directories(${SDL_TTF_PREFIX}/lib)
 include_directories(SYSTEM ${SDL_TTF_PREFIX}/include/SDL2)
