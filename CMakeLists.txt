@@ -798,6 +798,10 @@ else()
   target_link_libraries(supertux2_lib PUBLIC ${FREETYPE_LIBRARIES})
 endif()
 
+if(RAQM_FOUND)
+  target_link_libraries(supertux2_lib PUBLIC ${RAQM_LIBRARY})
+endif()
+
 target_link_libraries(supertux2_lib PUBLIC squirrel_lib)
 target_link_libraries(supertux2_lib PUBLIC sqstdlib_lib)
 target_link_libraries(supertux2_lib PUBLIC tinygettext_lib)
