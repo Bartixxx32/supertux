@@ -457,13 +457,6 @@ include_directories(SYSTEM ${TINYGETTEXT_PREFIX}/include)
 
 
 ## external/SDL_ttf with patches
-find_package(Freetype REQUIRED)
-find_package(RAQM)
-if(RAQM_FOUND)
-  set(WITH_RAQM --with-raqm)
-else()
-  set(WITH_RAQM --without-raqm)
-endif()
 set(SDL_TTF_PREFIX ${CMAKE_BINARY_DIR}/SDL_ttf/)
 ExternalProject_Add(SDL_ttf
   SOURCE_DIR "${CMAKE_SOURCE_DIR}/external/SDL_ttf/"
@@ -472,9 +465,6 @@ ExternalProject_Add(SDL_ttf
   -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
   -DCMAKE_C_FLAGS=${CMAKE_C_FLAGS}
   -DCMAKE_INSTALL_PREFIX=${SDL_TTF_PREFIX}
-  -DWITH_RAQM=${RAQM_FOUND}
-  -DRAQM_LIBRARIES=${RAQM_LIBRARIES}
-  -DRAQM_INCLUDE_DIR=${RAQM_INCLUDE_DIR}
   -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
   -DBUILD_SHARED_LIBS=OFF)
 add_library(SDL_ttf_lib STATIC IMPORTED)
