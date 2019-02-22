@@ -432,6 +432,7 @@ else()
   set(TINYGETTEXT_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 endif()
 
+find_package(RAQM)
 set(TINYGETTEXT_PREFIX ${CMAKE_BINARY_DIR}/tinygettext/)
 ExternalProject_Add(tinygettext
   SOURCE_DIR "${CMAKE_SOURCE_DIR}/external/tinygettext/"
@@ -448,6 +449,9 @@ ExternalProject_Add(tinygettext
   -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
   -DSDL2_LIBRARIES=${SDL2_LIBRARIES}
   -DSDL2_INCLUDE_DIRS=${SDL2_INCLUDE_DIRS}
+  -DWITH_RAQM=${RAQM_FOUND}
+  -DRAQM_LIBRARIES=${RAQM_LIBRARIES}
+  -DRAQM_INCLUDE_DIR=${RAQM_INCLUDE_DIR}
   -DLIB_SUFFIX=${LIB_SUFFIX})
 
 add_library(tinygettext_lib STATIC IMPORTED)
